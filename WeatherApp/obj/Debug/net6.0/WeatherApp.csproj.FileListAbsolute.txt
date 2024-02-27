@@ -13,3 +13,18 @@ D:\Visual Studio Projects\WeatherApp\WeatherApp\obj\Debug\net6.0\refint\WeatherA
 D:\Visual Studio Projects\WeatherApp\WeatherApp\obj\Debug\net6.0\WeatherApp.pdb
 D:\Visual Studio Projects\WeatherApp\WeatherApp\obj\Debug\net6.0\WeatherApp.genruntimeconfig.cache
 D:\Visual Studio Projects\WeatherApp\WeatherApp\obj\Debug\net6.0\ref\WeatherApp.dll
+C:\Users\8yvic\source\repos\WeatherApp\WeatherApp\bin\Debug\net6.0\WeatherApp.exe
+C:\Users\8yvic\source\repos\WeatherApp\WeatherApp\bin\Debug\net6.0\WeatherApp.deps.json
+C:\Users\8yvic\source\repos\WeatherApp\WeatherApp\bin\Debug\net6.0\WeatherApp.runtimeconfig.json
+C:\Users\8yvic\source\repos\WeatherApp\WeatherApp\bin\Debug\net6.0\WeatherApp.dll
+C:\Users\8yvic\source\repos\WeatherApp\WeatherApp\bin\Debug\net6.0\WeatherApp.pdb
+C:\Users\8yvic\source\repos\WeatherApp\WeatherApp\obj\Debug\net6.0\WeatherApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\8yvic\source\repos\WeatherApp\WeatherApp\obj\Debug\net6.0\WeatherApp.AssemblyInfoInputs.cache
+C:\Users\8yvic\source\repos\WeatherApp\WeatherApp\obj\Debug\net6.0\WeatherApp.AssemblyInfo.cs
+C:\Users\8yvic\source\repos\WeatherApp\WeatherApp\obj\Debug\net6.0\WeatherApp.csproj.CoreCompileInputs.cache
+C:\Users\8yvic\source\repos\WeatherApp\WeatherApp\obj\Debug\net6.0\WeatherApp.sourcelink.json
+C:\Users\8yvic\source\repos\WeatherApp\WeatherApp\obj\Debug\net6.0\WeatherApp.dll
+C:\Users\8yvic\source\repos\WeatherApp\WeatherApp\obj\Debug\net6.0\refint\WeatherApp.dll
+C:\Users\8yvic\source\repos\WeatherApp\WeatherApp\obj\Debug\net6.0\WeatherApp.pdb
+C:\Users\8yvic\source\repos\WeatherApp\WeatherApp\obj\Debug\net6.0\WeatherApp.genruntimeconfig.cache
+C:\Users\8yvic\source\repos\WeatherApp\WeatherApp\obj\Debug\net6.0\ref\WeatherApp.dll
