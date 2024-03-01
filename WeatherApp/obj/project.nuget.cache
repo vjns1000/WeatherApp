@@ -1,13 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "BFnFwMtt1t2WKzPesUsKY6wHqJVRWnFTc0o0zvJLEgJr6ErGRx2A+1pcZimdUztaql03dDELZ/2KFdvR66K2IA==",
+  "dgSpecHash": "ruHmprPs2syE6CVGytQxe/ivN9ac52QBjGGUms6QKi+SkJz4KhVV+I5gXNumjXH3cLbmICiIlIpKc7dHJgQHrQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\8yvic\\source\\repos\\WeatherApp\\WeatherApp\\WeatherApp.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\8yvic\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.26\\microsoft.windowsdesktop.app.ref.6.0.26.nupkg.sha512",
-    "C:\\Users\\8yvic\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.26\\microsoft.netcore.app.ref.6.0.26.nupkg.sha512",
-    "C:\\Users\\8yvic\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.26\\microsoft.aspnetcore.app.ref.6.0.26.nupkg.sha512",
-    "C:\\Users\\8yvic\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.26\\microsoft.netcore.app.host.win-x64.6.0.26.nupkg.sha512"
-  ],
+  "projectFilePath": "D:\\Visual Studio Projects\\WeatherApp\\WeatherApp\\WeatherApp.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }
