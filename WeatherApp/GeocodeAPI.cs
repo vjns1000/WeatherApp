@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
@@ -12,10 +13,10 @@ namespace WeatherApp
     {
         const string _gecodoing_url = "https://api.api-ninjas.com/";
         HttpClient _gecodingHTTP;
-
         public readonly static GeocodeAPI _geoInstance = new GeocodeAPI();
         public GeocodeAPI()
         {
+            
             _gecodingHTTP = new HttpClient() { BaseAddress = new Uri(_gecodoing_url) };
 
             // Add an Accept header for "application/json" format
@@ -32,22 +33,28 @@ namespace WeatherApp
             return await response.Content.ReadAsStringAsync();
         }
 
-        public async Task <GeocodeInfo> GetGeographyInfo(string city, string country)
+        /// <summary>
+        /// Returns list of cities with their names, longitude and latitude
+        /// </summary>
+        /// <param name="city"></param>
+        /// <param name="country"></param>
+        /// <returns></returns>
+        public async Task <List<GeocodeInfo[]>> GetGeographyInfo(List<string> cities, List<string> countries)
         {
-            // Parse the JSON string into a JsonDocument
-            using (JsonDocument document = JsonDocument.Parse(await _geoInstance.GetCoords(city, country)))
+            List<GeocodeInfo[]> geocodeInfoList = new List<GeocodeInfo[]>();
+            for (int i = 0; i < cities.Count; i++)
             {
-                // Convert Jason string to C# object
-                JsonElement root = document.RootElement[0];
-                GeocodeInfo GeoInfo = new GeocodeInfo();
-                GeoInfo.Name = root.GetProperty("name").ToString();
-                GeoInfo.Latitude = root.GetProperty("latitude").GetDouble();
-                GeoInfo.Longitude = root.GetProperty("longitude").GetDouble();
-                GeoInfo.Country = root.GetProperty("country").ToString();
-                return GeoInfo;
-                
-            };
+                GeocodeInfo?[] geocodeInfos = JsonSerializer.Deserialize<GeocodeInfo[]>(await _geoInstance.GetCoords(cities[i], countries[i]));
+                geocodeInfoList.Add(geocodeInfos);
+            }
+            
+            return geocodeInfoList;
         }
 
+        public async Task<GeocodeInfo[]> GetGeographyInfo(string city, string country)
+        {
+            GeocodeInfo?[] geocodeInfos = JsonSerializer.Deserialize<GeocodeInfo[]>(await _geoInstance.GetCoords(city, country));
+            return geocodeInfos;
+        }
     }
 }

@@ -13,7 +13,7 @@ namespace WeatherApp
         public double TempMin { set; get; }
         public double TempMax { set; get; }
         public double Speed { set; get; }
-        public string City { set; get; }
+        public string Name { set; get; }
         public string Country { set; get; }
         public string Description { set; get; }
 

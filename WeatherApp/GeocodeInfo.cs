@@ -8,9 +8,11 @@ namespace WeatherApp
 {
     internal class GeocodeInfo
     {
-        public string Name { set; get; }
-        public double Longitude { set; get; }
-        public double Latitude { set; get; }
-        public string Country { set; get; }
+        public string name { set; get; }
+        public double longitude { set; get; }
+        public double latitude { set; get; }
+        public string country { set; get; }
+        public string state { set; get; }
+
     }
 }
