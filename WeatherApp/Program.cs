@@ -1,30 +1,47 @@
 ﻿using System.Net.Http;
 using WeatherApp;
 
-//var weather = await WeatherAPI.Instance.GetWeather(27.18f, 31.9f);
+// For the default screen. Display Asyut weather.
+await WeatherAPI.Instance.GetWeather("Asyut", "Egypt");
+Console.WriteLine($"{WeatherAPI.Instance}\nPress any key to enter new cities.");
+Console.ReadKey();
+Console.Clear(); // Clears the console screen
 
+Console.WriteLine("Enter cities and their countries. Enter 'exit' to stop.");
 
-//Console.WriteLine($"{weather.City} Weather Now: {weather.Temp:0.#}°C");
-
-//Console.WriteLine("Enter Country");
-//var country = Console.ReadLine();
-//Console.WriteLine("Enter City");
-//var city = Console.ReadLine();
-List<string> cities = new List<string> { "Alexandria", "Tokyo" };
-List<string> countries = new List<string> { "Egypt", "japan" };
-List<WeatherProperties> weatherList = await WeatherAPI.Instance.GetWeather(cities, countries);
-
-// Iterate over the list of weather properties and print each city's information
-for (int i = 0; i < cities.Count; i++)
+var CityCountryList = new List<Tuple<string, string>>();
+while (true)
 {
-    Console.WriteLine($"Weather information for {cities[i]}, {countries[i]}:");
-    Console.WriteLine($"Description: {weatherList[i].Description}");
-    Console.WriteLine($"Temperature: {weatherList[i].Temp:0.#}°C");
-    Console.WriteLine($"Max Temperature: {weatherList[i].TempMax:0.#}°C");
-    Console.WriteLine($"Min Temperature: {weatherList[i].TempMin:0.#}°C");
-    Console.WriteLine();
+    Console.Write("Enter City: ");
+    var city = Console.ReadLine();
+
+    if (city == "exit")
+        break;
+    Console.Write("Enter Country: ");
+    var country = Console.ReadLine();
+
+
+    CityCountryList.Add(new(city, country));
+
+}
+// Display Cities and countries in a table.
+Console.WriteLine("\nCities and their corresponding countries:");
+Console.WriteLine("-------------------------------------------------------------------");
+Console.WriteLine("City:                                   | Country:");
+Console.WriteLine("----------------------------------------|--------------------------");
+
+foreach (var pair in CityCountryList)
+{
+    Console.WriteLine($"{pair.Item1,-40} | {pair.Item2,-30}");
 }
 
-//// To display new cities' weather 
-//Console.WriteLine("click 1 to search for new cities");
-//int n = int.Parse(Console.ReadLine());
+Console.WriteLine("-------------------------------------------------------------------");
+Console.Clear();
+
+// Print City name, Min and Max temperature.
+for (int i = 0; i < CityCountryList.Count; i++)
+{
+    await WeatherAPI.Instance.GetWeather(CityCountryList[i].Item1, CityCountryList[i].Item2);
+    Console.WriteLine(WeatherAPI.Instance);
+
+}

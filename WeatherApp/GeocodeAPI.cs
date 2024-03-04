@@ -16,7 +16,7 @@ namespace WeatherApp
         public readonly static GeocodeAPI _geoInstance = new GeocodeAPI();
         public GeocodeAPI()
         {
-            
+
             _gecodingHTTP = new HttpClient() { BaseAddress = new Uri(_gecodoing_url) };
 
             // Add an Accept header for "application/json" format
@@ -34,23 +34,11 @@ namespace WeatherApp
         }
 
         /// <summary>
-        /// Returns list of cities with their names, longitude and latitude
+        /// Returns city name, country name, its longitude and latitude
         /// </summary>
         /// <param name="city"></param>
         /// <param name="country"></param>
         /// <returns></returns>
-        public async Task <List<GeocodeInfo[]>> GetGeographyInfo(List<string> cities, List<string> countries)
-        {
-            List<GeocodeInfo[]> geocodeInfoList = new List<GeocodeInfo[]>();
-            for (int i = 0; i < cities.Count; i++)
-            {
-                GeocodeInfo?[] geocodeInfos = JsonSerializer.Deserialize<GeocodeInfo[]>(await _geoInstance.GetCoords(cities[i], countries[i]));
-                geocodeInfoList.Add(geocodeInfos);
-            }
-            
-            return geocodeInfoList;
-        }
-
         public async Task<GeocodeInfo[]> GetGeographyInfo(string city, string country)
         {
             GeocodeInfo?[] geocodeInfos = JsonSerializer.Deserialize<GeocodeInfo[]>(await _geoInstance.GetCoords(city, country));
