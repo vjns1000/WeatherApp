@@ -1,47 +1,48 @@
 ﻿using System.Net.Http;
 using WeatherApp;
+using System.Globalization;
 
-// For the default screen. Display Asyut weather.
-await WeatherAPI.Instance.GetWeather("Asyut", "Egypt");
-Console.WriteLine($"{WeatherAPI.Instance}\nPress any key to enter new cities.");
-Console.ReadKey();
-Console.Clear(); // Clears the console screen
-
-Console.WriteLine("Enter cities and their countries. Enter 'exit' to stop.");
-
-var CityCountryList = new List<Tuple<string, string>>();
-while (true)
+void DisplayWeather(WeatherProperties weather)
 {
-    Console.Write("Enter City: ");
-    var city = Console.ReadLine();
+    Console.ForegroundColor = ConsoleColor.White;
+    Console.Write($"{(weather.Name + ", " + weather.Country),-20}");
 
-    if (city == "exit")
-        break;
-    Console.Write("Enter Country: ");
-    var country = Console.ReadLine();
+    Console.ForegroundColor = ConsoleColor.Yellow; 
+    Console.Write($" ({weather.Temp:0.#}°C)");
 
+    Console.ForegroundColor = ConsoleColor.Blue; 
+    Console.Write($" ({weather.TempMin:0.#}°C ");
 
-    CityCountryList.Add(new(city, country));
+    Console.ForegroundColor = ConsoleColor.Red;
+    Console.Write($"{weather.TempMax,-4:0.#}°C)");
+
+    Console.ForegroundColor = ConsoleColor.Cyan;
+    string Description = weather.Description;
+    TextInfo TextInfo = CultureInfo.CurrentCulture.TextInfo;
+    string CapitalizedDescription = TextInfo.ToTitleCase(Description);
+    Console.WriteLine($" {CapitalizedDescription}");
+
+    
+    Console.ResetColor();
 
 }
-// Display Cities and countries in a table.
-Console.WriteLine("\nCities and their corresponding countries:");
-Console.WriteLine("-------------------------------------------------------------------");
-Console.WriteLine("City:                                   | Country:");
-Console.WriteLine("----------------------------------------|--------------------------");
 
-foreach (var pair in CityCountryList)
+
+var geocodeInfos = await GeocodeAPI.Instance.GetGeographyInfo("London", "England");
+
+if (geocodeInfos.Length == 0)
 {
-    Console.WriteLine($"{pair.Item1,-40} | {pair.Item2,-30}");
+    Console.WriteLine($"No city X in country Y");
 }
-
-Console.WriteLine("-------------------------------------------------------------------");
-Console.Clear();
-
-// Print City name, Min and Max temperature.
-for (int i = 0; i < CityCountryList.Count; i++)
+else if (geocodeInfos.Length > 1)
 {
-    await WeatherAPI.Instance.GetWeather(CityCountryList[i].Item1, CityCountryList[i].Item2);
-    Console.WriteLine(WeatherAPI.Instance);
+    foreach(var city in geocodeInfos)
+    {
+        var weather = await WeatherAPI.Instance.GetWeather(city.latitude, city.longitude);
+        DisplayWeather(weather);
+    }
+}
+else
+{
 
 }

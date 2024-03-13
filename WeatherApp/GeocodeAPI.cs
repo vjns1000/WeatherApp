@@ -13,10 +13,9 @@ namespace WeatherApp
     {
         const string _gecodoing_url = "https://api.api-ninjas.com/";
         HttpClient _gecodingHTTP;
-        public readonly static GeocodeAPI _geoInstance = new GeocodeAPI();
+        public readonly static GeocodeAPI Instance = new GeocodeAPI();
         public GeocodeAPI()
         {
-
             _gecodingHTTP = new HttpClient() { BaseAddress = new Uri(_gecodoing_url) };
 
             // Add an Accept header for "application/json" format
@@ -41,7 +40,8 @@ namespace WeatherApp
         /// <returns></returns>
         public async Task<GeocodeInfo[]> GetGeographyInfo(string city, string country)
         {
-            GeocodeInfo?[] geocodeInfos = JsonSerializer.Deserialize<GeocodeInfo[]>(await _geoInstance.GetCoords(city, country));
+            var response = await Instance.GetCoords(city, country);
+            GeocodeInfo?[] geocodeInfos = JsonSerializer.Deserialize<GeocodeInfo[]>(response);
             return geocodeInfos;
         }
     }
