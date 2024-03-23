@@ -5,7 +5,7 @@ using System.Diagnostics.Metrics;
 
 // For the default screen. Display Asyut weather
 List<GeocodeInfo> CountryCityList = new List<GeocodeInfo>();
-CountryCityList.Add((await GeocodeAPI.Instance.GetGeographyInfo("Asyut", "Egypt"))[0]);
+CountryCityList.Add((await GeocodeAPI.Instance.GetGeographyInfo("Asyut", "Egypt"))[0]); // TDOO: Get actual location?
 DisplayWeather(await WeatherAPI.Instance.GetWeather(CountryCityList[0].latitude, CountryCityList[0].latitude));
 while (true)
 {
